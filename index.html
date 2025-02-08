@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day!</title>
+    <title>Happy Valentine's Day, Yok!</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&family=Sarabun:wght@400;700&display=swap');
 
         body, html {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Sarabun', sans-serif;
             margin: 0;
             padding: 0;
             height: 100%;
@@ -59,6 +59,12 @@
         p {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
+        }
+
+        .thai {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.1rem;
+            color: #ff4081;
         }
 
         .heart-container {
@@ -154,6 +160,10 @@
                 font-size: 1rem;
             }
 
+            .thai {
+                font-size: 0.9rem;
+            }
+
             .heart {
                 height: 80px;
                 width: 80px;
@@ -192,21 +202,22 @@
     <div id="particles-js"></div>
     <div class="content">
         <header>
-            <h1 data-aos="fade-down" data-aos-duration="1000">Happy Valentine's Day!</h1>
+            <h1 data-aos="fade-down" data-aos-duration="1000">Happy Valentine's Day, Yok!</h1>
             <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">To my amazing girlfriend</p>
+            <p class="thai" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">ถึงแฟนสาวสุดที่รักของผม</p>
         </header>
 
         <main>
-            <div class="heart-container" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+            <div class="heart-container" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="900">
                 <div class="heart"></div>
             </div>
-            <div id="message" class="message" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900">
+            <div id="message" class="message" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">
                 <p id="typed-text"></p>
             </div>
         </main>
 
         <footer>
-            <button onclick="showSurprise()" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Click for a surprise!</button>
+            <button onclick="showSurprise()" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1500">Click for a surprise! / คลิกเพื่อเซอร์ไพรส์!</button>
         </footer>
     </div>
 
@@ -236,7 +247,7 @@
             });
 
             new Typed('#typed-text', {
-                strings: ["My dearest, your love fills my heart with joy every day. You're the most beautiful and amazing person I know. Thank you for being you. I love you more than words can express!"],
+                strings: ["Yok, my love, you fill my heart with joy every day. You're the most beautiful and amazing person I know. Thank you for being you. I love you more than words can express!<br><br>ยก ที่รัก คุณทำให้หัวใจฉันเต็มไปด้วยความสุขทุกวัน คุณเป็นคนที่สวยและน่าทึ่งที่สุดที่ฉันรู้จัก ขอบคุณที่เป็นตัวของคุณเอง ฉันรักคุณมากกว่าคำพูดใดๆ จะบรรยายได้!"],
                 typeSpeed: 40,
                 showCursor: false
             });
@@ -245,12 +256,12 @@
         function showSurprise() {
             Swal.fire({
                 title: 'I love you to the moon and back!',
-                text: 'You mean everything to me, my love.',
+                html: 'You mean everything to me, my love.<br><br>คุณคือทุกสิ่งสำหรับฉัน ที่รัก',
                 imageUrl: 'https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif',
                 imageWidth: 200,
                 imageHeight: 200,
                 imageAlt: 'Animated heart',
-                confirmButtonText: 'I love you too!',
+                confirmButtonText: 'I love you too! / ฉันก็รักคุณ!',
                 background: '#fff0f5',
                 confirmButtonColor: '#d4145a',
                 showConfirmButton: true,
