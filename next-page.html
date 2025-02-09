@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Album</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <title>My Valentine Message</title>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
@@ -15,11 +14,13 @@
             font-family: 'Poppins', 'Sarabun', sans-serif;
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow-x: hidden;
+            min-height: 100vh;
             background: linear-gradient(135deg, #ffe6e6, #ffb3b3, #ff9999);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         @keyframes gradientBG {
@@ -28,122 +29,110 @@
             100% { background-position: 0% 50%; }
         }
 
-        .content {
+        .container {
             max-width: 800px;
-            margin: 0 auto;
+            width: 100%;
             padding: 20px;
-            text-align: center;
+            box-sizing: border-box;
         }
 
-        h1 {
+        .typing-container {
+            text-align: center;
+            margin: 2rem 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #typed-strings {
+            display: none;
+        }
+
+        .typed-text {
             font-family: 'Dancing Script', cursive;
             font-size: 2.5rem;
             color: #d4145a;
-            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.4;
         }
 
-        .spotify-container {
+        .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 152px;
-            margin-bottom: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            margin-top: 2rem;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .spotify-container iframe {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 12px;
-        }
-
-        .photo-album {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .photo-album img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            position: absolute;
-        }
-
-        .photo-album img.active {
-            opacity: 1;
+            border: none;
         }
 
         @media (max-width: 768px) {
-            .content {
+            .container {
                 padding: 15px;
             }
 
-            h1 {
-                font-size: 2rem;
+            .typed-text {
+                font-size: 1.8rem;
             }
 
-            .spotify-container {
-                padding-bottom: 152px;
+            .typing-container {
+                min-height: 150px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1 data-aos="fade-down">Our Love Album</h1>
-        
-        <div class="spotify-container" data-aos="fade-up">
-            <iframe 
-                src="https://open.spotify.com/embed/track/0V3sKBY7Iypaufb6RzR3Er?utm_source=generator&theme=0&autoplay=1" 
-                frameBorder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-            </iframe>
+    <div class="container">
+        <div class="typing-container" data-aos="fade-down">
+            <div id="typed-strings">
+                <p>My dearest girlfriend... ❤️</p>
+                <p>You make my heart skip a beat every time I see you... 💕</p>
+                <p>Your smile brightens up my darkest days... ✨</p>
+                <p>You are my everything, my Valentine... 🌹</p>
+                <p>I love you more than words can express... 💝</p>
+            </div>
+            <span id="typed" class="typed-text"></span>
         </div>
-        
-        <div class="photo-album" data-aos="fade-up">
-            <img src="https://drive.google.com/file/d/1Rpj44pbBK7Abpu1fLbhDRA6cuqApDTDG/view?usp=drive_link" alt="Love memory 1" class="active">
-            <img src="https://drive.google.com/file/d/14nhbzs4AM2MG69OY2T3bUx9aUhd7p4Rx/view?usp=drive_link" alt="Love memory 2">
-            <img src="https://drive.google.com/file/d/1uFF7AVwqXayazvKk8fpzKo8a9bu0hhWY/view?usp=drive_link" alt="Love memory 3">
-            <img src="https://drive.google.com/file/d/1TBysBIuhHZ-nPQ3OgdfEIAJurHNGFUAW/view?usp=drive_link" alt="Love memory 4">
-            <img src="https://drive.google.com/file/d/1IiuZ4z7hvIl7EwQikhP60OGLkrbajtbn/view?usp=drive_link" alt="Love memory 5">
+
+        <div class="video-container" data-aos="fade-up">
+            <iframe
+                src="https://www.youtube.com/embed/OYPiXBIgvJ8?start=43&autoplay=1&mute=1"
+                title="Valentine's Day Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
-                disable: 'mobile',
-                once: true
+                duration: 1000,
+                once: true,
+                disable: 'mobile'
             });
 
-            // Photo album auto-swap
-            const photos = document.querySelectorAll('.photo-album img');
-            let currentPhotoIndex = 0;
-
-            function swapPhoto() {
-                photos[currentPhotoIndex].classList.remove('active');
-                currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
-                photos[currentPhotoIndex].classList.add('active');
-            }
-
-            setInterval(swapPhoto, 3000); // Swap photo every 3 seconds
+            new Typed('#typed', {
+                stringsElement: '#typed-strings',
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                startDelay: 1000,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|',
+                autoInsertCss: true,
+            });
         });
     </script>
 </body>
