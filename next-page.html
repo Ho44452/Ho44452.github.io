@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Album</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&family=Sarabun:wght@400;700&display=swap');
+
+        body, html {
+            font-family: 'Poppins', 'Sarabun', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffe6e6, #ffb3b3, #ff9999);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d4145a;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .spotify-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 152px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .spotify-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .photo-album {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-album img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            position: absolute;
+        }
+
+        .photo-album img.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .spotify-container {
+                padding-bottom: 152px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1 data-aos="fade-down">Our Love Album</h1>
+        
+        <div class="spotify-container" data-aos="fade-up">
+            <iframe 
+                src="https://open.spotify.com/embed/track/0V3sKBY7Iypaufb6RzR3Er?utm_source=generator&theme=0&autoplay=1" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+        </div>
+        
+        <div class="photo-album" data-aos="fade-up">
+            <img src="/placeholder.svg?height=300&width=400" alt="Love memory 1" class="active">
+            <img src="/placeholder.svg?height=300&width=400" alt="Love memory 2">
+            <img src="/placeholder.svg?height=300&width=400" alt="Love memory 3">
+            <img src="/placeholder.svg?height=300&width=400" alt="Love memory 4">
+            <img src="/placeholder.svg?height=300&width=400" alt="Love memory 5">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                disable: 'mobile',
+                once: true
+            });
+
+            // Photo album auto-swap
+            const photos = document.querySelectorAll('.photo-album img');
+            let currentPhotoIndex = 0;
+
+            function swapPhoto() {
+                photos[currentPhotoIndex].classList.remove('active');
+                currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+                photos[currentPhotoIndex].classList.add('active');
+            }
+
+            setInterval(swapPhoto, 3000); // Swap photo every 3 seconds
+        });
+    </script>
+</body>
+</html>
