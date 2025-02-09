@@ -247,7 +247,7 @@
             });
 
             new Typed('#typed-text', {
-                strings: ["Yok, my love, you fill my heart with joy every day. You're the most beautiful and amazing person I know. Thank you for being you. I love you more than words can express!<br><br> ที่รัก คุณทำให้หัวใจฉันเต็มไปด้วยความสุขทุกวัน คุณเป็นคนที่สวยและน่าทึ่งที่สุดที่ฉันรู้จัก ขอบคุณที่เป็นตัวของคุณเอง ฉันรักคุณมากกว่าคำพูดใดๆ จะบรรยายได้!"],
+                strings: ["Yok, my love, you fill my heart with joy every day. You're the most beautiful and amazing person I know. Thank you for being you. I love you more than words can express!<br><br>ยก ที่รัก คุณทำให้หัวใจฉันเต็มไปด้วยความสุขทุกวัน คุณเป็นคนที่สวยและน่าทึ่งที่สุดที่ฉันรู้จัก ขอบคุณที่เป็นตัวของคุณเอง ฉันรักคุณมากกว่าคำพูดใดๆ จะบรรยายได้!"],
                 typeSpeed: 40,
                 showCursor: false
             });
@@ -261,7 +261,7 @@
                 imageWidth: 200,
                 imageHeight: 200,
                 imageAlt: 'Animated heart',
-                confirmButtonText: 'I love you too! / ฉันก็รักคุณ!',
+                confirmButtonText: 'Thx for accept my Luv',
                 background: '#fff0f5',
                 confirmButtonColor: '#d4145a',
                 showConfirmButton: true,
@@ -276,6 +276,10 @@
                         spread: 70,
                         origin: { y: 0.6 }
                     });
+                    // Redirect to the next page after a short delay
+                    setTimeout(() => {
+                        window.location.href = 'next-page.html';
+                    }, 1500); // 1.5 seconds delay
                 }
             });
         }
