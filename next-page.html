@@ -57,17 +57,17 @@
             line-height: 1.4;
         }
 
-        .video-container {
+        .spotify-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 152px;
             margin-top: 2rem;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .video-container iframe {
+        .spotify-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -83,6 +83,25 @@
             margin-top: 1rem;
         }
 
+        .next-button {
+            display: inline-block;
+            background-color: #d4145a;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 20, 90, 0.4);
+        }
+
+        .next-button:hover {
+            background-color: #ff1e6d;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 30, 109, 0.6);
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -94,6 +113,11 @@
 
             .typing-container {
                 min-height: 150px;
+            }
+
+            .next-button {
+                padding: 12px 24px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -111,15 +135,22 @@
             <span id="typed" class="typed-text"></span>
         </div>
 
-        <div class="video-container" data-aos="fade-up">
+        <div class="spotify-container" data-aos="fade-up">
             <iframe
-                src="https://www.youtube.com/embed/OYPiXBIgvJ8?start=43&autoplay=1"
-                title="Valentine's Day Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
+                src="https://open.spotify.com/embed/track/0V3sKBY7Iypaufb6RzR3Er?utm_source=generator&theme=0&autoplay=1"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
             </iframe>
         </div>
-        <p class="note">Note:ถ้าเพลงไม่เล่นอย่าลืมกดเล่นนะจ๊ะ.</p>
+        <p class="note">ถ้าเพลงไม่เล่นอย่าลืมกดเล่นนะจ๊ะ</p>
+        
+        <div style="text-align: center;">
+            <a href="rose-page.html" class="next-button" data-aos="fade-up">
+                Continue to Rose Garden 🌹
+            </a>
+        </div>
     </div>
 
     <script>
@@ -145,4 +176,3 @@
     </script>
 </body>
 </html>
-
