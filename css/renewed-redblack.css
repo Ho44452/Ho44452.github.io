@@ -1,0 +1,106 @@
+body {
+  /* Dynamic animated gradient background */
+  background: linear-gradient(270deg, #1a1a1a, #ff2d55, #1a1a1a, #ff2d55);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease-in-out infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.renewed-card {
+  background: rgba(34, 34, 34, 0.85);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(255,45,85,0.25), 0 1.5px 8px 0 #ff2d55;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  border: 2.5px solid #ff2d55;
+  backdrop-filter: blur(8px);
+  animation: fadeInCard 1s cubic-bezier(.4,0,.2,1);
+}
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: none; }
+}
+.renewed-lovely {
+  font-size: 2.5rem;
+  color: #ff2d55;
+  margin-bottom: 0.7rem;
+  letter-spacing: 2px;
+  font-family: 'Segoe Script', cursive, sans-serif;
+  animation: popIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.7); }
+  80% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.renewed-title {
+  color: #ff2d55;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+}
+.renewed-input {
+  width: 90%;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 2px solid #ff2d55;
+  background: #181818;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 1.3rem;
+  outline: none;
+  text-align: center;
+  letter-spacing: 0.25em;
+  box-shadow: 0 2px 8px 0 rgba(255,45,85,0.10);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.renewed-input:focus {
+  border: 2.5px solid #ff2d55;
+  box-shadow: 0 0 0 2px #ff2d5533;
+}
+.renewed-btn {
+  background: linear-gradient(90deg, #ff2d55 60%, #1a1a1a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(255,45,85,0.15);
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+  letter-spacing: 1px;
+}
+.renewed-btn:hover {
+  background: linear-gradient(90deg, #1a1a1a 0%, #ff2d55 100%);
+  color: #ff2d55;
+  transform: translateY(-2px) scale(1.03);
+}
+.renewed-error-message {
+  color: #ff2d55;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  display: none;
+  min-height: 1.2em;
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+}
