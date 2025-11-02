@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เช็คราคาเอเย่น - B.C. Depot</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 50px 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .company-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 25px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .company-logo {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .company-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .company-year {
+      font-size: 16px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .agent-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 20px;
+      padding: 25px 30px;
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .agent-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .agent-btn:hover::before {
+      left: 100%;
+    }
+
+    .agent-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+    }
+
+    .agent-btn:active {
+      transform: translateY(-2px);
+    }
+
+    .agent-btn.hyundai {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);
+    }
+
+    .agent-btn.hyundai:hover {
+      box-shadow: 0 15px 35px rgba(245, 87, 108, 0.6);
+    }
+
+    .agent-btn.huenga {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);
+    }
+
+    .agent-btn.huenga:hover {
+      box-shadow: 0 15px 35px rgba(79, 172, 254, 0.6);
+    }
+
+    .agent-btn.samudera {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      box-shadow: 0 10px 25px rgba(67, 233, 123, 0.4);
+    }
+
+    .agent-btn.samudera:hover {
+      box-shadow: 0 15px 35px rgba(67, 233, 123, 0.6);
+    }
+
+    .agent-name {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .agent-price {
+      display: block;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .result-container {
+      margin-top: 30px;
+      padding: 25px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 20px;
+      text-align: center;
+      display: none;
+      animation: slideIn 0.5s ease;
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .result-container.show {
+      display: block;
+    }
+
+    .result-title {
+      color: white;
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .result-price {
+      color: white;
+      font-size: 48px;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .result-unit {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 24px;
+      margin-left: 5px;
+    }
+
+    .contact-section {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 2px solid #e0e0e0;
+      text-align: center;
+    }
+
+    .contact-title {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .phone-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .phone-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(17, 153, 142, 0.6);
+    }
+
+    .phone-icon {
+      font-size: 22px;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 40px 25px;
+      }
+
+      .company-name {
+        font-size: 24px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .agent-btn {
+        padding: 20px 25px;
+      }
+
+      .agent-name {
+        font-size: 20px;
+      }
+
+      .phone-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="company-header">
+      <div class="company-logo">📦</div>
+      <div class="company-name">B.C. Depot</div>
+      <div class="company-year">Since 2018</div>
+    </div>
+
+    <h1>🚢 เช็คราคาเอเย่น</h1>
+    <p class="subtitle">เลือกเอเย่นเพื่อดูราคา</p>
+    
+    <div class="buttons-container">
+      <button class="agent-btn hyundai" onclick="showPrice('Hyundai', 2500)">
+        <span class="agent-name">Hyundai</span>
+        <span class="agent-price">ตรวจสอบราคา</span>
+      </button>
+
+      <button class="agent-btn huenga" onclick="showPrice('HuengA', 1750)">
+        <span class="agent-name">HuengA</span>
+        <span class="agent-price">ตรวจสอบราคา</span>
+      </button>
+
+      <button class="agent-btn samudera" onclick="showPrice('Samudera', 1550)">
+        <span class="agent-name">Samudera</span>
+        <span class="agent-price">ตรวจสอบราคา</span>
+      </button>
+    </div>
+
+    <div class="result-container" id="result">
+      <div class="result-title" id="agentName"></div>
+      <div>
+        <span class="result-price" id="priceValue"></span>
+        <span class="result-unit">บาท</span>
+      </div>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-title">ต้องการสอบถามเพิ่มเติม?</div>
+      <a href="tel:+66123456789" class="phone-btn">
+        <span class="phone-icon">📞</span>
+        <span>โทรติดต่อเรา</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function showPrice(agentName, price) {
+      const resultContainer = document.getElementById('result');
+      const agentNameElement = document.getElementById('agentName');
+      const priceElement = document.getElementById('priceValue');
+
+      agentNameElement.textContent = `ราคา ${agentName}`;
+      priceElement.textContent = price.toLocaleString();
+
+      resultContainer.classList.remove('show');
+      
+      setTimeout(() => {
+        resultContainer.classList.add('show');
+      }, 10);
+    }
+  </script>
+</body>
+</html>
